@@ -26,7 +26,7 @@ namespace Microsoft.Templates.UI.ViewModels.NewProject
     {
         public const string NewProjectStepPlatform = "01Platform";
         public const string NewProjectStepFramework = "02Framework";
-
+        public const string NewProjectStepAvaloniaVersion = "03AvaloniaVersion";
         private RelayCommand _refreshTemplatesCacheCommand;
         private RelayCommand _compositionToolCommand;
 
@@ -37,6 +37,8 @@ namespace Microsoft.Templates.UI.ViewModels.NewProject
         public ProjectTypeViewModel ProjectType { get; } = new ProjectTypeViewModel(() => Instance.IsSelectionEnabled(MetadataType.ProjectType), () => Instance.OnProjectTypeSelectedAsync());
 
         public FrameworkViewModel Framework { get; } = new FrameworkViewModel(() => Instance.IsSelectionEnabled(MetadataType.Framework), () => Instance.OnFrameworkSelectedAsync());
+
+        public AvaloniaVersionViewModel AvaloniaVersion { get; } = new AvaloniaVersionViewModel(() => Instance.IsSelectionEnabled(MetadataType.AvaloniaVersion), () => Instance.OnAvaloniaVersionSelectedAsync());
 
         public UserSelectionViewModel UserSelection { get; } = new UserSelectionViewModel();
 
@@ -79,6 +81,7 @@ namespace Microsoft.Templates.UI.ViewModels.NewProject
             {
                 yield return StepData.MainStep(NewProjectStepPlatform, "1", Resources.NewProjectStepPlatform, () => new ProjectTypePage(), true, true);
                 yield return StepData.MainStep(NewProjectStepFramework, "2", Resources.NewProjectStepDesignPattern, () => new FrameworkPage());
+                yield return StepData.MainStep(NewProjectStepAvaloniaVersion, "3", Resources.NewProjectStepAvaloniaVersion, () => new AvaloniaVersionPage());
             }
         }
 
@@ -184,6 +187,10 @@ namespace Microsoft.Templates.UI.ViewModels.NewProject
             {
                 Framework.Selected = frameworkMetaData;
             }
+            else if (item is AvaloniaVersionMetaDataViewModel avaloniaVersionMetaData)
+            {
+                AvaloniaVersion.Selected = avaloniaVersionMetaData;
+            }
             else if (item is TemplateInfoViewModel template)
             {
                 await AddTemplateAsync(template);
@@ -196,6 +203,14 @@ namespace Microsoft.Templates.UI.ViewModels.NewProject
 
             Context.ProjectTypes = ProjectType.SelectedItems.Select(x=>x.Name).ToList();
             await Framework.LoadDataAsync(Context);
+        }
+
+        private async Task OnAvaloniaVersionSelectedAsync()
+        {
+            await SafeThreading.JoinableTaskFactory.SwitchToMainThreadAsync();
+
+            Context.AvaloniaVersion = AvaloniaVersion.Selected.Name;
+            UserSelection.Initialize(Context);
         }
 
         private async Task OnFrameworkSelectedAsync()
@@ -214,6 +229,7 @@ namespace Microsoft.Templates.UI.ViewModels.NewProject
             await UserSelection.AddLayoutTemplatesAsync();
 
             WizardStatus.IsLoading = false;
+            await AvaloniaVersion.LoadDataAsync(Context);
         }
 
         private async Task BuildStepViewModelAsync(TemplateType templateType)

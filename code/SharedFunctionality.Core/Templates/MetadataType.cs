@@ -8,5 +8,6 @@ namespace Microsoft.Templates.Core
     {
         ProjectType = 0,
         Framework = 1,
+        AvaloniaVersion = 2
     }
 }

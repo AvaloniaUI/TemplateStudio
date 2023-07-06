@@ -15,6 +15,8 @@ namespace Microsoft.Templates.Core.Gen
 
         public string BackEndFramework { get; set; }
 
+        public string AvaloniaVersion { get; set; }
+
         public string Platform { get; private set; }
 
         public Dictionary<string, string> PropertyBag { get; set; } = new Dictionary<string, string>();

@@ -49,6 +49,23 @@ namespace Microsoft.Templates.UI.Services
             }
         }
 
+        public static bool LoadAvaloniaVersions(ObservableCollection<AvaloniaVersionMetaDataViewModel> frameworks, UserSelectionContext context)
+        {
+            var targetFrameworks = GenContext.ToolBox.Repo.GetFrontEndFrameworks(context)
+                                        .Select(m => new AvaloniaVersionMetaDataViewModel(m))
+                                        .OrderBy(f => f.Order)
+                                        .ToList();
+
+            frameworks.Clear();
+
+            foreach (var item in targetFrameworks)
+            {
+                frameworks.Add(item);
+            }
+
+            return frameworks.Any();
+        }
+
         public static bool LoadFrameworks(ObservableCollection<FrameworkMetaDataViewModel> frameworks, UserSelectionContext context)
         {
             var targetFrameworks = GenContext.ToolBox.Repo.GetFrontEndFrameworks(context)

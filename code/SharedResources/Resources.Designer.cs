@@ -232,6 +232,15 @@ namespace Microsoft.Templates.SharedResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Select Avalonia version.
+        /// </summary>
+        public static string AvaloniaVersionTitle {
+            get {
+                return ResourceManager.GetString("AvaloniaVersionTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Breaking changes.
         /// </summary>
         public static string BreakingChanges {
@@ -1374,6 +1383,15 @@ namespace Microsoft.Templates.SharedResources {
         public static string NewItemTitleTesting {
             get {
                 return ResourceManager.GetString("NewItemTitleTesting", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Avalonia version.
+        /// </summary>
+        public static string NewProjectStepAvaloniaVersion {
+            get {
+                return ResourceManager.GetString("NewProjectStepAvaloniaVersion", resourceCulture);
             }
         }
         
@@ -2837,7 +2855,7 @@ namespace Microsoft.Templates.SharedResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Template Studio for Avalonia.
+        ///   Looks up a localized string similar to Avalonia Template Studio.
         /// </summary>
         public static string TemplateStudioForAvalonia {
             get {

@@ -1432,4 +1432,13 @@ See the final result: {2}
   <data name="ProjectDetailsTargetPlatformSectionTitle" xml:space="preserve">
     <value>Target platforms</value>
   </data>
+  <data name="NewProjectStepAvaloniaVersion" xml:space="preserve">
+    <value>Avalonia version</value>
+  </data>
+  <data name="TemplateStudioForAvalonia" xml:space="preserve">
+    <value>Avalonia Template Studio</value>
+  </data>
+  <data name="AvaloniaVersionTitle" xml:space="preserve">
+    <value>Select Avalonia version</value>
+  </data>
 </root>

@@ -1,0 +1,46 @@
+﻿{
+    "$schema": "http://json.schemastore.org/template",
+    "author": "Microsoft Community",
+    "classifications": [
+        "Universal"
+    ],
+    "name": "ts.Avalonia.Project.Desktop.v10",
+    "shortName": "ts.Avalonia.Project.Desktop.v10",
+    "identity": "ts.Avalonia.Project.Desktop.v10",
+    "tags": {
+        "language": "C#",
+        "type": "item",
+        "ts.type": "composition",
+        "ts.platform": "Avalonia",
+        "ts.version": "1.0.0",
+        "ts.compositionFilter": "$avaloniaVersion == 10 & ts.type == project"
+    },
+    "sourceName": "ts.ItemName",
+    "preferNameDirectory": true,
+    "PrimaryOutputs": [
+    ],
+    "symbols": {
+        "ts.rootNamespace": {
+            "type": "parameter",
+            "replaces": "Param_RootNamespace"
+        },
+        "ts.projectName": {
+            "type": "parameter",
+            "replaces": "Param_ProjectName",
+            "fileRename": "Param_ProjectName"
+        },
+        "Framework": {
+            "type": "parameter",
+            "description": "The target framework for the project.",
+            "datatype": "choice",
+            "choices": [
+                {
+                    "choice": "net7.0",
+                    "description": "Target net7.0"
+                }
+            ],
+            "replaces": "FrameworkParameter",
+            "defaultValue": "net7.0"
+        }
+    }
+}

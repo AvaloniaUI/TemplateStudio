@@ -471,6 +471,10 @@
     <Content Include="Templates\Ft\Embedded.CSharp\Param_ProjectName.Desktop\Param_ProjectName.Desktop_postaction.csproj">
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
+    <Content Include="Templates\_comp\v10\Project.CSharp\.template.config\template.json" />
+    <Content Include="Templates\_comp\v10\Project.CSharp\App.axaml">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
     <Page Include="..\SharedStyles\TemplateStudioStyles.xaml">
       <Link>Styles\TemplateStudioStyles.xaml</Link>
       <Generator>MSBuild:Compile</Generator>

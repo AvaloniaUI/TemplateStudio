@@ -5,13 +5,6 @@
     <LangVersion>latest</LangVersion>
   </PropertyGroup>
 
-  <!--#if (AvaloniaStableChosen) -->
-  <ItemGroup>
-    <ProjectCapability Include="Avalonia"/>
-    <TrimmerRootAssembly Include="Avalonia.Themes.Fluent" />
-  </ItemGroup>
-  <!--#endif -->
-  
   <ItemGroup>
     <AvaloniaResource Include="Assets\**" />
   </ItemGroup>
@@ -23,8 +16,5 @@
     <PackageReference Include="Avalonia.ReactiveUI" Version="$(AvaloniaVersion)" />
     <!--Condition below is needed to remove Avalonia.Diagnostics package from build output in Release configuration.-->
     <PackageReference Condition="'$(Configuration)' == 'Debug'" Include="Avalonia.Diagnostics" Version="$(AvaloniaVersion)" />
-    <!--#if (AvaloniaStableChosen) -->
-    <PackageReference Include="XamlNameReferenceGenerator" Version="1.6.1" />
-    <!--#endif -->
   </ItemGroup>
 </Project>
